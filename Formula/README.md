@@ -92,7 +92,7 @@ All implementations must follow Salesforce best practices, including:
 - Proper field documentation (Description and Help Text)
 - Enforcement of **least privilege access**
 
-## Task 01: Lead Score
+### Task 01: Lead Score
 
 Use the score ranges below to build the second field with the label **Lead Rating** and name `Lead_RatingCopy`. Similar to the Lead Score field, this field should only be visible to users with the **Sales Representative** permission set. Accessibility for screen reader users is a requirement at RAS. Your solution must include alternate text for each displayed image.
 
@@ -167,7 +167,7 @@ IF(
 
 ---
 
-## Task 02: Lead Rating
+### Task 02: Lead Rating
 
 Use the score ranges below to build the second field with the label **Lead Rating** and name `Lead_RatingCopy`. Similar to the Lead Score field, this field should only be visible to users with the **Sales Representative** permission set. Accessibility for screen reader users is a requirement at RAS. Your solution must include alternate text for each displayed image.
 
@@ -256,3 +256,5 @@ CASE(
 - Better decision-making
 
 ---
+
+## Challenge 02 : Increase Visibility and Enhance Decision-Making for Service Teams
