@@ -185,7 +185,7 @@ Use the score ranges below to build the second field with the label **Lead Ratin
 <details>
     <summary><strong>Logical Summary</strong></summary>
 
-## Field Configuration
+### Field Configuration
 
 | Attribute | Value                |
 | --------- | -------------------- |
@@ -258,3 +258,70 @@ CASE(
 ---
 
 ## Challenge 02 : Increase Visibility and Enhance Decision-Making for Service Teams
+
+Service agents at RAS manage a large volume of cases and pride themselves in their award-winning customer service. Agents regularly review customers’ asset records to see what products have been purchased in addition to other important information to inform the way they manage the case. The service leadership team would like service agents to be able to see the opportunity amount associated with each asset record. The opportunity amount is important for decision-making purposes and service-level agreements.
+
+### Task 01 : Increase Visibilty
+
+Build a solution that allows users with the existing **Service Agent** permission set to view the amount from the related opportunity record without granting access to the Opportunity object. Label your solution `Opportunity Value` with the name `Opportunity_Value` and add it to the asset page layout. The value displayed should match the amount on the related opportunity record exactly.
+
+Next, the leadership team indicated that case severity is a new key performance indicator (KPI) that the team will review often. The team agreed that the case severity KPI will need to be surfaced in multiple reports and dashboards and will need to be used in a variety of calculations.
+
+<details>
+<summary><strong>Logic Summary</strong></summary>
+
+### Field Configuration
+
+| Attribute | Value                          |
+| --------- | ------------------------------ |
+| Label     | Opportunity Value              |
+| API Name  | Opportunity_Value\_\_C         |
+| Type      | Formula (Currency, 2 decimals) |
+| Access    | Service Agent                  |
+| Object    | Asset                          |
+
+</details>
+
+### Solution
+
+<details>
+<summary><strong>Hint</strong></summary>
+
+### Field Configuration
+
+| Attribute   | Value                                            |
+| ----------- | ------------------------------------------------ |
+| Label       | Opportunity Value                                |
+| API Name    | Opportunity_Value\_\_C                           |
+| Type        | Formula (Currency, 2 decimals)                   |
+| Access      | Service Agent                                    |
+| Object      | Asset                                            |
+| Description | Giveproper description                           |
+| Help text   | Help text to improve readability of screen user. |
+
+### Tip
+
+> You need a formula which will populate related opporutnity amount on asset object.
+
+</details>
+
+<details>
+<summary><strong>View Formula</strong></summary>
+
+```java
+    Opportunity__r.Amount
+```
+
+### How?
+
+In order to get the field of related object we use object relationship name with suffix `__r` & Field API name. Lastly set the field level security to Service Agent only. Now you have resolve the issues with best security pratices. If the Service Agent don't have permission to see opportunity object with the help of formula field they can deal with the related opportunity amount & close cases smoothly.
+
+</details>
+
+[Opportunity Value Field XML](fields/Asse_Opportunity_Value__c.field-meta.xml)
+
+### Task 02 : Enhance Decision-Making for Service Teams
+
+The existing Severity picklist contains values 0 - 5, where 0 is the most severe and 5 is the least severe. This field has not been required in the past so older records may have a blank value. Based on this picklist, build a reusable solution to meet this requirement. Only users with the **Service Agent** permission set should be able to view the solution and it should be labeled **Severity (Number)** with the resulting name of `Severity_NumberCopy`. To test your solution, modify the existing **Case Severity by Month Last Year** report to display the average severity. Your solution should use the simplest, most efficient reporting tool to calculate the average severity.
+
+## Challenge 03 : Enhance Reporting with Business Logic
