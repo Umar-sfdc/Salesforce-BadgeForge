@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Lead_ScoreCopy</fullName>
+    <fullName>Lead_Score</fullName>
     <description>Calculates a numerical score for each lead based on predefined qualification criteria such as source, contact availability, and communication preferences.</description>
     <externalId>false</externalId>
     <formula>
         IF(
-            ISPICKVAL(Status, "Closed - Not Converted"),
-            0,
-            IF(DoNotCall, -25, 0)
-            +
-            IF(NOT(ISBLANK(Email)), 15, 0)
-            +
-            CASE(
-                LeadSource,
-                "Web", 20,
-                "Phone Inquiry", 35,
-                "Partner Referral", 25,
-                "Purchased List", 10,
-                0
-            )
+				ISPICKVAL(Status, 'Closed - Not Converted'), 
+				0,
+				
+                (IF(DoNotCall = TRUE, -25, 0)) +
+                (IF(NOT(ISBLANK(Email)), 15, 0)) +
+                CASE(LeadSource,
+                    "Web", 20,
+                    "Phone Inquiry", 35,
+                    "Partner Referral", 25,
+                    "Purchased List", 10,
+                    0
+                )     
+
         )
     </formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>

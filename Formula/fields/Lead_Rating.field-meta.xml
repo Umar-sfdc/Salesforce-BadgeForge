@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lead_Rating</fullName>
+    <description>Provides a visual representation of lead quality using a star rating system based on the Lead Score.</description>
+    <externalId>false</externalId>
+    <formula>
+        IMAGE(
+            IF(Lead_Score__c >= 50, "/img/samples/stars_500.gif",
+            IF(Lead_Score__c >= 40, "/img/samples/stars_400.gif",
+            IF(Lead_Score__c >= 30, "/img/samples/stars_300.gif",
+            IF(Lead_Score__c >= 20, "/img/samples/stars_200.gif",
+            IF(Lead_Score__c >= 10, "/img/samples/stars_100.gif",
+            "/img/samples/stars_000.gif"))))),
+            
+            IF(Lead_Score__c >= 50, "5 Star",
+            IF(Lead_Score__c >= 40, "4 Star",
+            IF(Lead_Score__c >= 30, "3 Star",
+            IF(Lead_Score__c >= 20, "2 Star",
+            IF(Lead_Score__c >= 10, "1 Star",
+            "0 Star")))))
+        )
+    </formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Displays a star rating derived from the lead score. Higher ratings indicate higher-quality leads.</inlineHelpText>
+    <label>Lead Rating</label>
+    <type>Text</type>
+</CustomField>

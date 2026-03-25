@@ -46,8 +46,8 @@ P3["Inconsistent Lead Evaluation"]
 %% ========================
 %% ACTIONS
 %% ========================
-A1["Lead Score Formula<br/>(Lead_ScoreCopy)"]
-A2["Lead Rating Formula<br/>(Lead_RatingCopy)"]
+A1["Lead Score Formula<br/>(Lead_Score)"]
+A2["Lead Rating Formula<br/>(Lead_Rating)"]
 A3["Access Control<br/>(Permission Set)"]
 
 %% ========================
@@ -94,7 +94,7 @@ All implementations must follow Salesforce best practices, including:
 
 ### Task 01: Lead Score
 
-Use the score ranges below to build the second field with the label **Lead Rating** and name `Lead_RatingCopy`. Similar to the Lead Score field, this field should only be visible to users with the **Sales Representative** permission set. Accessibility for screen reader users is a requirement at RAS. Your solution must include alternate text for each displayed image.
+Use the score ranges below to build the second field with the label **Lead Rating** and name `Lead_Rating`. Similar to the Lead Score field, this field should only be visible to users with the **Sales Representative** permission set. Accessibility for screen reader users is a requirement at RAS. Your solution must include alternate text for each displayed image.
 
 | **Lead Score Range** | **Alternate Text** | **Image URL\\\***             |
 | -------------------- | ------------------ | ----------------------------- |
@@ -113,7 +113,7 @@ Use the score ranges below to build the second field with the label **Lead Ratin
 | Attribute | Value                        |
 | --------- | ---------------------------- |
 | Label     | Lead Score                   |
-| API Name  | Lead_ScoreCopy               |
+| API Name  | Lead_Score                   |
 | Type      | Formula (Number, 0 decimals) |
 | Access    | Sales Representative         |
 
@@ -163,13 +163,13 @@ IF(
 
 </details>
 
-[Lead Score Field XML](fields/Lead_ScoreCopy.field-meta.xml)
+[Lead Score Field XML](fields/Lead_Score.field-meta.xml)
 
 ---
 
 ### Task 02: Lead Rating
 
-Use the score ranges below to build the second field with the label **Lead Rating** and name `Lead_RatingCopy`. Similar to the Lead Score field, this field should only be visible to users with the **Sales Representative** permission set. Accessibility for screen reader users is a requirement at RAS. Your solution must include alternate text for each displayed image.
+Use the score ranges below to build the second field with the label **Lead Rating** and name `Lead_Rating`. Similar to the Lead Score field, this field should only be visible to users with the **Sales Representative** permission set. Accessibility for screen reader users is a requirement at RAS. Your solution must include alternate text for each displayed image.
 
 | **Lead Score Range** | **Alternate Text** | **Image URL\\\***             |
 | -------------------- | ------------------ | ----------------------------- |
@@ -190,7 +190,7 @@ Use the score ranges below to build the second field with the label **Lead Ratin
 | Attribute | Value                |
 | --------- | -------------------- |
 | Label     | Lead Rating          |
-| API Name  | Lead_RatingCopy      |
+| API Name  | Lead_Rating          |
 | Type      | Formula (Text)       |
 | Access    | Sales Representative |
 
@@ -226,18 +226,18 @@ Provides a **visual star rating** based on Lead Score for quick decision-making.
 ```java
 CASE(
     TRUE,
-    Lead_ScoreCopy < 10, IMAGE("/img/samples/stars_000.gif", "0 Star"),
-    Lead_ScoreCopy < 20, IMAGE("/img/samples/stars_100.gif", "1 Star"),
-    Lead_ScoreCopy < 30, IMAGE("/img/samples/stars_200.gif", "2 Star"),
-    Lead_ScoreCopy < 40, IMAGE("/img/samples/stars_300.gif", "3 Star"),
-    Lead_ScoreCopy < 50, IMAGE("/img/samples/stars_400.gif", "4 Star"),
+    Lead_Score < 10, IMAGE("/img/samples/stars_000.gif", "0 Star"),
+    Lead_Score < 20, IMAGE("/img/samples/stars_100.gif", "1 Star"),
+    Lead_Score < 30, IMAGE("/img/samples/stars_200.gif", "2 Star"),
+    Lead_Score < 40, IMAGE("/img/samples/stars_300.gif", "3 Star"),
+    Lead_Score < 50, IMAGE("/img/samples/stars_400.gif", "4 Star"),
     IMAGE("/img/samples/stars_500.gif", "5 Star")
 )
 ```
 
 </details>
 
-[Lead Rating Field XML](fields/Lead_RatingCopy.field-meta.xml)
+[Lead Rating Field XML](fields/Lead_Rating.field-meta.xml)
 
 ---
 
@@ -322,6 +322,6 @@ In order to get the field of related object we use object relationship name with
 
 ### Task 02 : Enhance Decision-Making for Service Teams
 
-The existing Severity picklist contains values 0 - 5, where 0 is the most severe and 5 is the least severe. This field has not been required in the past so older records may have a blank value. Based on this picklist, build a reusable solution to meet this requirement. Only users with the **Service Agent** permission set should be able to view the solution and it should be labeled **Severity (Number)** with the resulting name of `Severity_NumberCopy`. To test your solution, modify the existing **Case Severity by Month Last Year** report to display the average severity. Your solution should use the simplest, most efficient reporting tool to calculate the average severity.
+The existing Severity picklist contains values 0 - 5, where 0 is the most severe and 5 is the least severe. This field has not been required in the past so older records may have a blank value. Based on this picklist, build a reusable solution to meet this requirement. Only users with the **Service Agent** permission set should be able to view the solution and it should be labeled **Severity (Number)** with the resulting name of `Severity_Number`. To test your solution, modify the existing **Case Severity by Month Last Year** report to display the average severity. Your solution should use the simplest, most efficient reporting tool to calculate the average severity.
 
 ## Challenge 03 : Enhance Reporting with Business Logic
