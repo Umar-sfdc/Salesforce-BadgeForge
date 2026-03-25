@@ -370,7 +370,7 @@ The existing Severity picklist contains values 0 - 5, where 0 is the most severe
 <summary><strong>View Formula</strong></summary>
 
 ```java
-    VALUE(TEXT(Severity\_\_c))
+    VALUE(TEXT(Severity__c))
 ```
 
 ### How?
@@ -382,3 +382,57 @@ Severity is an Picklist field you can't directly control picklist values first y
 [Severity Number Field XML](fields/Case_Severity_Number.field-meta.xml)
 
 ## Challenge 03 : Enhance Reporting with Business Logic
+
+Now let’s take a look at some additional reporting needs identified by the service leadership team.
+
+You’ve also been asked to help the team structure the **Case Severity by Month Last Year** report so the average for each account is grouped based on when the case was closed. The team needs this one-time report for compliance purposes and will need to export it and sort the data based on close month in a comma-separated values (CSV) file.
+
+Create a solution with the title **Close Month** that will group cases based on the month the case was closed. After speaking with stakeholders, you’ve confirmed there's no business need for each individual case record to display the close month and the solution is only needed for this report. Below is a mock-up of how the team would like the report structured. Your report must include all 12 calendar months in English.
+
+<img src="img/case-reporting-table.png" alt="case report table">
+
+\*Account Names are for example purposes only. Accounts displayed in the actual report may differ.
+
+### Solution
+
+<details>
+<summary><strong>Hint</strong></summary>
+
+### Case Report
+
+Create a solution with the title **Close Month** that will group cases based on the month the case was closed. After speaking with stakeholders, you’ve confirmed there's no business need for each individual case record to display the close month and the solution is only needed for this report.
+
+| Attribute | Value         |
+| --------- | ------------- |
+| Label     | Clsose Month  |
+| Type      | Text          |
+| Access    | Service Agent |
+
+</details>
+
+<details>
+<summary><strong>View Formula</strong></summary>
+
+```java
+
+CASE(
+    MONTH(DATEVALUE(CLOSED_DATEONLY)),
+    1, "01 - January",
+    2, "02 - February",
+    3, "03 - March",
+    4, "04 - April",
+    5, "05 - May",
+    6, "06 - June",
+    7, "07 - July",
+    8, "08 - August",
+    9, "09 - September",
+    10, "10 - October",
+    11, "11 - November",
+    12, "12 - December",
+    "Unknown"
+)
+```
+
+</details>
+
+<strong>Report</strong> : [Case Severity by Month Last Year](img/final-report.png)
