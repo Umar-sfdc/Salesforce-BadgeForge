@@ -324,4 +324,61 @@ In order to get the field of related object we use object relationship name with
 
 The existing Severity picklist contains values 0 - 5, where 0 is the most severe and 5 is the least severe. This field has not been required in the past so older records may have a blank value. Based on this picklist, build a reusable solution to meet this requirement. Only users with the **Service Agent** permission set should be able to view the solution and it should be labeled **Severity (Number)** with the resulting name of `Severity_Number`. To test your solution, modify the existing **Case Severity by Month Last Year** report to display the average severity. Your solution should use the simplest, most efficient reporting tool to calculate the average severity.
 
+<details>
+<summary><strong>Logic Summary</strong></summary>
+
+### Field Configuration
+
+| Attribute | Value                        |
+| --------- | ---------------------------- |
+| Label     | Severity (Number)            |
+| API Name  | Severity_Number\_\_C         |
+| Type      | Formula (Number, 0 decimals) |
+| Access    | Service Agent                |
+| Object    | case                         |
+
+### Tip
+
+> Solve Service Agent problem as you discuss with your service manager what's the problem with `Severity` picklist field. Come up with the solution in `Serverity Number` field to solve this problem.
+
+</details>
+
+### Solution
+
+<details>
+<summary><strong>Hint</strong></summary>
+
+### Field Configuration
+
+| Attribute   | Value                        |
+| ----------- | ---------------------------- |
+| Label       | Severity (Number)            |
+| API Name    | Severity_Number\_\_C         |
+| Type        | Formula (Number, 0 decimals) |
+| Access      | Service Agent                |
+| Object      | case                         |
+| Description | Write a description          |
+| Hint        | Write a hint for screen user |
+
+### Tip
+
+> Pay attension to `Blank Field Handling` which to choose in Severity & Severity Number field. ^\_^
+
+</details>
+
+<details>
+<summary><strong>View Formula</strong></summary>
+
+```java
+    VALUE(TEXT(Severity\_\_c))
+```
+
+### How?
+
+Severity is an Picklist field you can't directly control picklist values first you need to convert picklist field into text to perfrom operation campare, etc. You are getting the result as `"0"` or `"2"` in the string format now you need to change the data type into Number becuase `Severity Number` return type is Number. Use the `VALUE()` function which is converting the text value into number value.
+
+</details>
+
+[Severity Number Field XML](fields/Case_Severity_Number.field-meta.xml)
+
 ## Challenge 03 : Enhance Reporting with Business Logic
