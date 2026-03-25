@@ -436,3 +436,7 @@ CASE(
 </details>
 
 <strong>Report</strong> : [Case Severity by Month Last Year](img/final-report.png)
+
+### 🚀 Superbadge Completed!
+
+<strong>“The version of you you want to become is built from what you do today.”</strong>
